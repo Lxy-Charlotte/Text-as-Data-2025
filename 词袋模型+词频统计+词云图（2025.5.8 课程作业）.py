@@ -20,10 +20,11 @@ def preprocess_text(text):
     #转换大小写
     text=text.lower()
     #移除URL
-   # text=re.sub(r'http\s+','',text)
+    text=re.sub(r'http\S+','',text)
+     #\S非空白字符 \s 空白字符 http\S+ 去掉http后面所有非空白字符
     #移除停用词
-    stop_words=set(['i','me','my','myself','to','com','http'])
-    text=' '.join([word for word in text.split()if word not in stop_words])
+    stop_words=set(['i','me','my','myself','to','com','the','is','to','on','in','of','and','are','for','with','our','are','rt','qt'])
+    text=' '.join([word for word in text.split(" ")if word not in stop_words])
     
     return text
 
